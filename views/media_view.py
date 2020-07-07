@@ -9,7 +9,7 @@ def get_medias():
                 'key_word': ''}, ]
     medias += [{'media_id': '002',
                 'subject': 'google',
-                'address': 'https://news.google.com/',
+                'address': 'https://news.google.com/search?q={0}&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans',
                 'key_word': ''}, ]
     return medias
 
