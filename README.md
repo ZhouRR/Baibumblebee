@@ -3,10 +3,26 @@ Project Baibumblebee
 environment:
 1. install git
 2. install conda
+3. install supervisor
 
-&. conda activate Baibumblebee
-&. git clone https://github.com/ZhouRR/Baibumblebee
+baibumblebee.sh:
+#!/bin/bash
+cd /opt/Baibumblebee
+source activate Baibumblebee
+exec python route.py
 
-run: uvicorn route:app --reload --host 0.0.0.0 --port 8000 &
+supervisord.conf:
+[program:Baibumblebee]
+command= /opt/baibumblebee.sh
+autorestart=true
+user=root
+startretries=3
 
-&. conda deactivate
+rewrite:
+1. rm -rf Baibumblebee
+2. git clone https://github.com/ZhouRR/Baibumblebee
+
+run: 
+supervisorctl status Baibumblebee
+supervisorctl start Baibumblebee
+supervisorctl stop Baibumblebee
