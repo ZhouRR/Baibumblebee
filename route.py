@@ -34,7 +34,7 @@ def execute_from_command_line(cmd=None):
 
 
 def main():
-    execute_from_command_line('uvicorn route:app --reload --host 0.0.0.0 --port 8000 &')
+    execute_from_command_line('uvicorn route:app --reload --host 0.0.0.0 --port 8000')
     pass
 
 
