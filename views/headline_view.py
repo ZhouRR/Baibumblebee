@@ -12,7 +12,7 @@ def post_headlines(media: Media):
     resp_body = request_utils.get(media.address.replace('{0}', media.key_word))
     soup = BeautifulSoup(resp_body, 'lxml')
     result = []
-    result += [soup.title.get_text(), ]
+    result += [soup.title.string, ]
     for child in soup.body.get_text():
         result += [child, ]
     return result
