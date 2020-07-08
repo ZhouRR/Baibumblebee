@@ -14,20 +14,23 @@ def get_index(source_list, key):
 
 
 def parse_google(soup):
-    main_tag_strings = []
-    main_tag = soup.main
-    for child in main_tag.strings:
-        main_tag_strings += [str(child), ]
+    tag_strings = []
+    article_tags = soup.find_all('article')
+    for article_tag in article_tags:
+        tag_strings += [str(article_tag.a['href']), ]
+        for child in article_tag.strings:
+            tag_strings += [str(child), ]
 
     headlines = []
-    for i in get_index(main_tag_strings, 'more_vert'):
-        if i + 9 >= len(main_tag_strings):
+    for i in get_index(tag_strings, 'more_vert'):
+        if i + 9 >= len(tag_strings):
             break
         headline = {
-            'title': main_tag_strings[i + 1],
-            'preview': main_tag_strings[i + 2],
-            'source': main_tag_strings[i + 5],
-            'datetime': main_tag_strings[i + 6]
+            'href': tag_strings[i + 1],
+            'title': tag_strings[i + 2],
+            'preview': tag_strings[i + 3],
+            'source': tag_strings[i + 6],
+            'datetime': tag_strings[i + 7]
         }
         headlines += [headline, ]
     return headlines
