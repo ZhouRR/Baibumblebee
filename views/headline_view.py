@@ -13,6 +13,6 @@ def post_headlines(media: Media):
     soup = BeautifulSoup(resp_body, 'lxml')
     result = [soup.title.string, ]
     body_tag = soup.body
-    for child in body_tag.descendants:
-        result += [child.string, ]
+    for child in body_tag.strings:
+        result += [child, ]
     return result
