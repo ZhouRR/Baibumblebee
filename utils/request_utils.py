@@ -3,7 +3,7 @@ import urllib3
 from utils.log_utils import log
 
 
-def get(url, content=''):
+def get(url, content='text/html; charset=utf-8'):
     log('GET:', url)
 
     pool_manger = urllib3.PoolManager()
