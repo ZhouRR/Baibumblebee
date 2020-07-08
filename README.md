@@ -4,6 +4,7 @@ environment:
 1. install git
 2. install conda
 3. install supervisor
+4. install lsof
 
 baibumblebee.sh:
 #!/bin/bash
@@ -19,8 +20,8 @@ user=root
 startretries=3
 
 rewrite:
-1. rm -rf Baibumblebee
-2. git clone https://github.com/ZhouRR/Baibumblebee
+1. cd /opt
+2. ./rewrite.sh
 
 ps aux|grep 8000
 
