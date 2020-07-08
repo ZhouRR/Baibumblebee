@@ -13,6 +13,5 @@ def post_headlines(media: Media):
     soup = BeautifulSoup(resp_body, 'lxml')
     result = []
     result += [soup.title.string, ]
-    for child in soup.body.get_text():
-        result += [child, ]
+    result += [soup.body.string, ]
     return result
