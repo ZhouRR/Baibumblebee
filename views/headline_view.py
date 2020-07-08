@@ -1,6 +1,8 @@
 from models.models import *
 from utils import request_utils
 
+import numpy as np
+
 from bs4 import BeautifulSoup
 
 
@@ -13,6 +15,7 @@ def post_headlines(media: Media):
     soup = BeautifulSoup(resp_body, 'lxml')
     result = [soup.title.string, ]
     main_tag = soup.main
-    for child in main_tag.strings:
-        result += [child, ]
+    headlines = np.array(main_tag.strings)
+    headlines = np.array_split(headlines, len(main_tag.strings)/9+1)
+    result += [headlines, ]
     return result
