@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 import urls
 from models.models import *
-from views import media_view, headline_view
+from views import media_view, headline_view, contents_view
 
 app = FastAPI()
 
@@ -27,6 +27,16 @@ async def get_headlines():
 @app.post(urls.HEAD_LINES)
 async def post_headlines(media: Media):
     return headline_view.post_headlines(media)
+
+
+@app.get(urls.CONTENTS)
+async def get_contents():
+    return contents_view.get_contents()
+
+
+@app.post(urls.CONTENTS)
+async def post_contents(headline: HeadLine):
+    return contents_view.post_contents(headline)
 
 
 def execute_from_command_line(cmd=None):

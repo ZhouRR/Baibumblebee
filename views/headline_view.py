@@ -26,7 +26,9 @@ def parse_google(soup):
         if i + 9 >= len(tag_strings):
             break
         headline = {
+            'media_id': '002',
             'href': tag_strings[i + 1],
+            'href_head': 'https://news.google.com/',
             'title': tag_strings[i + 2],
             'preview': tag_strings[i + 3],
             'source': tag_strings[i + 6],
