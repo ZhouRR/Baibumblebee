@@ -22,6 +22,8 @@ rewrite:
 1. rm -rf Baibumblebee
 2. git clone https://github.com/ZhouRR/Baibumblebee
 
+ps aux|grep 8000
+
 run: 
 supervisorctl status Baibumblebee
 supervisorctl start Baibumblebee
